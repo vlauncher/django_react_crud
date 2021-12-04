@@ -1,8 +1,8 @@
-from posts.views import CreatePosts,ListPosts,SinglePosts
+from posts.views import CreateListPostsApiView,SingleUpdateDestroyPostsApiView
 from django.urls import path
 
 urlpatterns = [
-  path('create/',CreatePosts.as_view(),name='create'),
-  path('',ListPosts.as_view(),name='list'),
-  path('<int:pk>/',SinglePosts.as_view(),name='single'),
+  path('',CreateListPostsApiView.as_view(),name='list'),
+  path('<int:pk>/',SingleUpdateDestroyPostsApiView.as_view(),name='single'),
+ 
 ]
