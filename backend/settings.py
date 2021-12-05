@@ -94,8 +94,8 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 import dj_database_url
 
-# DATABASES = {'default': dj_database_url.config(default='postgres://v2dent:chelsea24462@localhost/django_react_crud')}
-DATABASES = {'default': dj_database_url.config(default='postgres://uefnjcdz:LXKu_PEIFwTBMjHEaynbbVPICTMfJptv@fanny.db.elephantsql.com/uefnjcdz')}
+DATABASES = {'default': dj_database_url.config(default=os.getenv('DATABASE_URI'))}
+# DATABASES = {'default': dj_database_url.config(default='postgres://uefnjcdz:LXKu_PEIFwTBMjHEaynbbVPICTMfJptv@fanny.db.elephantsql.com/uefnjcdz')}
 
 
 # Password validation
@@ -144,3 +144,4 @@ STATIC_ROOT = (BASE_DIR/'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 SITE_ID = 1
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

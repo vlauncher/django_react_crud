@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { get_posts } from '../../redux/actions/posts'
+import { get_posts,delete_post } from '../../redux/actions/posts'
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom'
 
 export class Posts extends Component {
 
@@ -13,7 +14,7 @@ export class Posts extends Component {
             <div>
                 <h2 className="text-center my-3">All Posts</h2>
                 <div className="text-center">
-                    <a href="./addPosts.html" className="btn btn-dark">Add Post</a>
+                    <Link to="/create" className="btn btn-dark">Add Post</Link>
                 </div>
                 <table className="table-striped table">
                     <thead>
@@ -27,8 +28,8 @@ export class Posts extends Component {
                         <tr key={post.id}>
                             <td>{post.title}</td>
                             <td>{post.content}</td>
-                            <td><a href="./updatepost.html" className="btn btn-secondary btn-sm">Update</a></td>
-                            <td><a href="./deletepost.html" className="btn btn-sm btn-danger">Delete</a></td>
+                            <td><Link to={`/update/${post.id}`} className="btn btn-secondary btn-sm">Update</Link></td>
+                            <td><button className="btn btn-sm btn-danger" onClick={this.props.delete_post.bind(this,post.id)}>Delete</button></td>
                         </tr>
                         ))}
                     </tbody>
@@ -42,4 +43,4 @@ const mapStateToProps = state => ({
     posts:state.posts.posts
 })
 
-export default connect(mapStateToProps,{get_posts})(Posts);
+export default connect(mapStateToProps,{get_posts,delete_post})(Posts);
