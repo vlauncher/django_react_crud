@@ -4,7 +4,7 @@ from posts.models import Post
 class CreatePostsSerializers(serializers.ModelSerializer):
     class Meta:
         model = Post
-        exclude = ['user']
+        fields = '__all__'
 
 
 class ListPostsSerializers(serializers.ModelSerializer):

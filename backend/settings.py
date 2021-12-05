@@ -49,12 +49,16 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth.registration',
+    'corsheaders',
     #custom apps
     'users.apps.UsersConfig',
     'posts.apps.PostsConfig',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -88,17 +92,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+import dj_database_url
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_react_crud',
-        'USER':'v2dent',
-        'HOST':'localhost',
-        'PASSWORD':'chelsea24462',
-        'PORT':5432
-    }
-}
+# DATABASES = {'default': dj_database_url.config(default='postgres://v2dent:chelsea24462@localhost/django_react_crud')}
+DATABASES = {'default': dj_database_url.config(default='postgres://uefnjcdz:LXKu_PEIFwTBMjHEaynbbVPICTMfJptv@fanny.db.elephantsql.com/uefnjcdz')}
 
 
 # Password validation
