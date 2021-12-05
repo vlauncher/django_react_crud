@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 import dj_database_url
 
-DATABASES = {'default': dj_database_url.config(default=os.getenv('DATABASE_URI'))}
+DATABASES = {'default': dj_database_url.config(default=os.getenv('DATABASE_URI2'))}
 # DATABASES = {'default': dj_database_url.config(default='postgres://uefnjcdz:LXKu_PEIFwTBMjHEaynbbVPICTMfJptv@fanny.db.elephantsql.com/uefnjcdz')}
 
 
